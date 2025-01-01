@@ -19,8 +19,14 @@ else:
     exit(0)
 
 temp = input('视频链接> ')
-if temp[:33] == 'https://www.bilibili.com/video/BV' and temp[43] == '/':
-    BV = temp[31:43]
+if temp[:33] == 'https://www.bilibili.com/video/BV':
+    if len(temp) == 43:
+        BV = temp[31:43]
+    elif temp[43] in ['/', '?']:
+        BV = temp[31:43]
+    else:
+        input('输入格式错误，按 ENTER 结束')
+        exit(0)
 else:
     input('输入格式错误，按 ENTER 结束')
     exit(0)
